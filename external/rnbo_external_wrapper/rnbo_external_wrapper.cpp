@@ -859,7 +859,7 @@ class rnbo_external_wrapper :
 
 				//only supporting numbers right now
 				//don't bind invisible or debug
-				if (info.type != ParameterType::ParameterTypeNumber || !info.visible || info.debug)
+				if (!(info.type == ParameterType::ParameterTypeNumber || info.type == ParameterType::ParameterTypeSignal) || !info.visible || info.debug)
 					continue;
 				std::string name = mRNBOObj.getParameterId(i);
 				std::shared_ptr<c74::min::attribute_base> a;
@@ -1412,7 +1412,7 @@ void rnbowrapper_getinstanceattrs(void* _x, long* count, t_symbol*** attrnames)
 
 		//only supporting numbers right now
 		//don't bind invisible or debug
-		if (info.type != ParameterType::ParameterTypeNumber || !info.visible || info.debug)
+		if (!(info.type == ParameterType::ParameterTypeNumber || info.type == ParameterType::ParameterTypeSignal) || !info.visible || info.debug)
 			continue;
 		names.push_back(rnbocore.getParameterId(i));
 	}
